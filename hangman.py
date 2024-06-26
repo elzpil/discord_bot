@@ -13,6 +13,7 @@ class Hangman:
         print(f'Displaying word: {display}')
         print(f'Guessed letters: {self.guessed_letters}')
         return display
+    
     def guess(self, letter):
         if letter in self.guessed_letters:
             return 'You already guessed that letter.'
