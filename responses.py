@@ -1,7 +1,6 @@
 from random import choice, randint
 import aiohttp
 
-
 async def get_joke() -> str:
     joke_url = 'https://official-joke-api.appspot.com/random_joke'
     try:
@@ -28,10 +27,6 @@ async def get_response(user_input: str) -> str:
     elif 'roll dice' in lowered:
         return f'You rolled: {randint(1, 6)}'
     elif 'joke' in lowered:
-<<<<<<< HEAD
         return await get_joke()  
-=======
-        return await get_joke()  # Await the async function get_joke() here
->>>>>>> main
     else:
         return ''

@@ -1,5 +1,3 @@
-from random import choice, randint
-import aiohttp
 from typing import Final, Dict
 import os
 from dotenv import load_dotenv
@@ -15,8 +13,6 @@ intents.message_content = True
 client: Client = Client(intents=intents)
 hangman_sessions: Dict[str, Hangman] = {}
 
-
-
 async def send_message(message: Message, user_message: str) -> None:
     if not user_message:
         print('no message here...')
@@ -24,14 +20,9 @@ async def send_message(message: Message, user_message: str) -> None:
     if is_private := user_message[0] == '?':
         user_message = user_message[1:]
     try:
-<<<<<<< HEAD
         response: str = await get_response(user_message)
         if response :  
             await (message.author.send(response) if is_private else message.channel.send(response))
-=======
-        response: str = await get_response(user_message)  # Await get_response here
-        await (message.author.send(response) if is_private else message.channel.send(response))
->>>>>>> main
     except Exception as e:
         print(e)
 
@@ -49,10 +40,6 @@ async def on_message(message: Message) -> None:
     channel: str = str(message.channel)
     print(f'[{channel}] {username} : {user_message}')
     
-<<<<<<< HEAD
-=======
-    # Start a new game of Hangman if the user mentions it
->>>>>>> main
     if 'hangman' in user_message.lower():
         if channel not in hangman_sessions:
             hangman_sessions[channel] = Hangman()
@@ -77,8 +64,4 @@ def main() -> None:
     client.run(TOKEN)
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     main()
-=======
-    main()
->>>>>>> main
